@@ -1,0 +1,37 @@
+# Entornos virtuales
+.venv
+venv/
+ENV/
+env/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Base de datos local
+*.sqlite3
+db.sqlite3
+
+# Archivos de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Otros
+.env.local
+*.log
+.DS_Store
