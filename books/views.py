@@ -1,7 +1,9 @@
 from django.db.models import Count, Avg, Q
 from rest_framework import viewsets, filters, status
 from rest_framework.decorators import action
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.reverse import reverse
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Author, Book
@@ -11,6 +13,33 @@ from .serializers import (
     BookSerializer
 )
 
+
+@api_view(['GET'])
+def api_root(view, request, format=None):
+    """
+    API Root - Welcome to Bookshop API
+
+    This API provides endpoints for managing books and authors.
+    """
+    return Response({
+        'message': 'Welcome to Bookshop API! 📚',
+        'version': '1.0.0',
+        'endpoints': {
+            'authors': reverse('author-list', request=request, format=format),
+            'books': reverse('book-list', request=request, format=format),
+        },
+        'documentation': {
+            'swagger': 'Coming soon',
+            'github': 'https://github.com/Antonella94duarte/bookshop',
+        },
+        'features': [
+            'Full CRUD operations',
+            'Advanced filtering and search',
+            'Pagination support',
+            'Comprehensive statistics',
+            'Docker containerization',
+        ]
+    })
 
 class AuthorViewSet(viewsets.ModelViewSet):
     """

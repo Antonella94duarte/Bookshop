@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import AuthorViewSet, BookViewSet
+from .views import AuthorViewSet, BookViewSet, api_root
 
 # Create a router and register our viewsets
 router = DefaultRouter()
@@ -9,5 +9,6 @@ router.register(r'books', BookViewSet, basename='book')
 
 # The API URLs are determined automatically by the router
 urlpatterns = [
+    path('', api_root, name='api-root'),
     path('', include(router.urls)),
 ]

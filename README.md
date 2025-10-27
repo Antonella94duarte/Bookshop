@@ -207,6 +207,11 @@ Bookshop/
 
 ## 🔍 Example API Usage
 
+## 📝 Notes
+
+- The database uses PostgreSQL sequences for auto-incrementing IDs. If you run the `load_initial_data` command multiple times, IDs may not start from 1. This is expected behavior and does not affect functionality.
+- To reset IDs to start from 1, you can drop and recreate the database with `docker-compose down -v` followed by the setup commands.
+
 ### Create an Author
 ```bash
 curl -X POST http://localhost:8000/api/authors/ \
@@ -230,7 +235,7 @@ curl -X POST http://localhost:8000/api/books/ \
     "genre": "fiction",
     "pages": 127,
     "price": "12.99",
-    "author_ids": [1]
+    "author_ids": [9]
   }'
 ```
 
@@ -247,9 +252,3 @@ curl "http://localhost:8000/api/books/search_books/?q=Harry&author=Rowling"
 ## 👤 Author
 
 Liz Antonella Duarte - [GitHub] (https://github.com/Antonella94duarte)
-
-## 🙏 Acknowledgments
-
-- Django Documentation
-- Django Rest Framework Documentation
-- PostgreSQL Documentation
